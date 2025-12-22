@@ -27,6 +27,6 @@ class TwigTest extends AbstractBrowserTestcase
             });
 
         $this->assertEquals('foobar.html', $statements[1]);
-        $this->assertCount(1, $statements);
+        $this->assertCount(2, $statements);
     }
 }
