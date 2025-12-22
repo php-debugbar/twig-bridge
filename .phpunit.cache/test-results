@@ -1,1 +1,0 @@
-{"version":2,"defects":{"Debugbar\\Bridge\\Doctrine\\Tests\\Browser\\DoctrineTest::testTwigCollector":8,"DebugBar\\Bridge\\Twig\\Tests\\Browser\\TwigTest::testTwigCollector":8},"times":{"Debugbar\\Bridge\\Doctrine\\Tests\\Browser\\DoctrineTest::testTwigCollector":0.051,"DebugBar\\Bridge\\Twig\\Tests\\Browser\\TwigTest::testTwigCollector":0.055}}
