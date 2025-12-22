@@ -25,8 +25,8 @@
         "phpunit/phpunit": "^10",
         "symfony/panther": "^1|^2.1",
         "dbrekelmans/bdi": "^1.4",
-        "symfony/dom-crawler": "^7",
-        "symfony/browser-kit": "^7"
+        "symfony/dom-crawler": "^6|^7",
+        "symfony/browser-kit": "^6|^7"
     },
     "autoload": {
         "psr-4": {
