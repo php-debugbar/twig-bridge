@@ -21,12 +21,12 @@ class TwigTest extends AbstractBrowserTestcase
 
         $crawler = $client->waitForVisibility('.phpdebugbar-panel[data-collector=twig]');
 
-        $statements = $crawler->filter('.phpdebugbar-panel[data-collector=twig] .phpdebugbar-widgets-debug')
+        $statements = $crawler->filter('.phpdebugbar-panel[data-collector=twig] .phpdebugbar-widgets-name')
             ->each(function($node){
                 return $node->getText();
             });
 
-        $this->assertEquals('Hello peter pan', $statements[0]);
+        $this->assertEquals('foobar.html', $statements[1]);
         $this->assertCount(1, $statements);
     }
 }
