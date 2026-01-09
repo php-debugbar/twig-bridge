@@ -83,10 +83,10 @@ class DumpTwigExtension extends AbstractExtension
                     $data[$key] = $value;
                 }
             }
-            $output .= $this->formatVar($data);
+            $output .= $this->getDataFormatter()->formatVar($data);
         } else {
             for ($i = 2; $i < $count; $i++) {
-                $output .= $this->formatVar(func_get_arg($i));
+                $output .= $this->getDataFormatter()->formatVar(func_get_arg($i));
             }
         }
 

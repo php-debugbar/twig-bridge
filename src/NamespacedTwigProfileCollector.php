@@ -35,30 +35,17 @@ use Twig\Profiler\Profile;
  */
 class NamespacedTwigProfileCollector extends DataCollector implements Renderable, AssetProvider
 {
-    /**
-     * @var Profile
-     */
-    private $profile;
+    private Profile $profile;
 
-    /**
-     * @var LoaderInterface|Environment|null
-     */
-    private $loader;
+    private LoaderInterface|Environment|null $loader;
 
-    /**
-     * @var int
-     */
-    private $templateCount;
 
-    /**
-     * @var int
-     */
-    private $blockCount;
+    private int $templateCount = 0;
 
-    /**
-     * @var int
-     */
-    private $macroCount;
+    private int $blockCount = 0;
+
+    private int $macroCount = 0;
+
     /**
      * @var array[] {
      * @var string $name
@@ -70,13 +57,7 @@ class NamespacedTwigProfileCollector extends DataCollector implements Renderable
      */
     private $templates;
 
-    /**
-     * TwigProfileCollector constructor.
-     *
-     * @param Profile $profile
-     * @param LoaderInterface|Environment $loaderOrEnv
-     */
-    public function __construct(Profile $profile, $loaderOrEnv = null)
+    public function __construct(Profile $profile, LoaderInterface|Environment|null $loaderOrEnv = null)
     {
         $this->profile = $profile;
         $this->setLoaderOrEnv($loaderOrEnv);
@@ -100,7 +81,7 @@ class NamespacedTwigProfileCollector extends DataCollector implements Renderable
      *
      * @return array
      */
-    public function getWidgets()
+    public function getWidgets(): array
     {
         return [
             'twig' => [
@@ -119,7 +100,7 @@ class NamespacedTwigProfileCollector extends DataCollector implements Renderable
     /**
      * @return array
      */
-    public function getAssets()
+    public function getAssets(): array
     {
         return [
             'css' => 'widgets/templates/widget.css',
@@ -132,7 +113,7 @@ class NamespacedTwigProfileCollector extends DataCollector implements Renderable
      *
      * @return array Collected data
      */
-    public function collect()
+    public function collect(): array
     {
         $this->templateCount = $this->blockCount = $this->macroCount = 0;
         $this->templates = [];
@@ -163,12 +144,12 @@ class NamespacedTwigProfileCollector extends DataCollector implements Renderable
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'twig';
     }
 
-    public function getHtmlCallGraph()
+    public function getHtmlCallGraph(): string
     {
         $dumper = new HtmlDumper();
         return $dumper->dump($this->profile);
@@ -182,7 +163,7 @@ class NamespacedTwigProfileCollector extends DataCollector implements Renderable
      * @var bool ajax
      * }
      */
-    public function getXdebugLink($template, $line = 1)
+    public function getXdebugLink(string $template, ?int $line = 1): ?array
     {
         if (is_null($this->loader)) {
             return null;

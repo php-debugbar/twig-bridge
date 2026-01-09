@@ -2,6 +2,7 @@
 
 namespace DebugBar\Bridge\Twig;
 
+use DebugBar\DataCollector\MessagesCollector;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -13,22 +14,14 @@ use Twig\TwigFunction;
  */
 class DebugTwigExtension extends AbstractExtension
 {
-    /**
-     * @var \DebugBar\DataCollector\MessagesCollector|null
-     */
-    protected $messagesCollector;
+    protected ?MessagesCollector $messagesCollector;
 
     /**
      * @var string
      */
-    protected $functionName;
+    protected string $functionName;
 
-    /**
-     *
-     * @param \DebugBar\DataCollector\MessagesCollector|null $app
-     * @param string $functionName
-     */
-    public function __construct($messagesCollector, $functionName = 'debug')
+    public function __construct(?MessagesCollector $messagesCollector, string $functionName = 'debug')
     {
         $this->messagesCollector = $messagesCollector;
         $this->functionName = $functionName;

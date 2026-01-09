@@ -3,6 +3,7 @@
 namespace DebugBar\Bridge\Twig;
 
 use DebugBar\Bridge\Twig\MeasureTwigTokenParser;
+use DebugBar\DataCollector\TimeDataCollector;
 use Twig\Extension\AbstractExtension;
 
 /**
@@ -13,23 +14,14 @@ use Twig\Extension\AbstractExtension;
  */
 class MeasureTwigExtension extends AbstractExtension
 {
-    /**
-     * @var \DebugBar\DataCollector\TimeDataCollector|null
-     */
-    protected $timeCollector;
+    protected ?TimeDataCollector $timeCollector;
 
     /**
      * @var string
      */
-    protected $tagName;
+    protected string $tagName;
 
-    /**
-     * Create a new auth extension.
-     *
-     * @param \DebugBar\DataCollector\TimeDataCollector|null $debugbar
-     * @param string $tagName
-     */
-    public function __construct($timeCollector, $tagName = 'measure')
+    public function __construct(?TimeDataCollector $timeCollector, string $tagName = 'measure')
     {
         $this->timeCollector = $timeCollector;
         $this->tagName = $tagName;
